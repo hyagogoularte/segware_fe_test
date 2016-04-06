@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Teste Segware</title>
+    
+    <meta charset="UTF-8">
+    <meta author="Hyago SIlva Goularte">
+
+    <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="styles/weatherForecast.css" />
+
+</head>
+
+<body ng-app="weartherForecastApp">
+    <div ng-controller="weartherForecastController">
+    <!--  -->
+        <form ng-submit="getWeatherForecast(city)" class="form-inline">
+            <div class="form-group">
+                <label for="cityId">{{'city' | translate}}:</label>
+                <input id="cityId" class="form-control" ng-model="city" placeholder="Ex: Rio de Janeiro">
+                <button class="btn btn-default" type="submit">{{'verifyTemp' | translate}}</button>
+            </div>
+        </form>
+        <!--  -->
+        <div ng-if="hasData">
+            <h2>{{'timeIn' | translate}} {{city}}?</h2>
+            <div class="blockInfoCloud">
+                <!--  -->
+                <div class="blockCloud">
+                    <weather icon="{{weather.cloud.icon}}"></weather>
+                </div>
+                <!--  -->
+                <table class="blockInfo">
+                    <tr>
+                        <th>{{'actualTemperature' | translate}}: </th>
+                        <td>{{weather.temperature.current | transformToCentrigrate}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{'maximumTemperature' | translate}}: </th>
+                        <td>{{weather.temperature.max | transformToCentrigrate}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{'minimumTemperature' | translate}}: </th>
+                        <td>{{weather.temperature.min | transformToCentrigrate}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{'description' | translate}}: </th>
+                        <td>{{weather.cloud.description | trim | translate}}</td>
+                    </tr>
+                </table>
+                <!--  -->
+            </div>
+        </div>
+        <div ng-if="!hasData">
+            <h4>{{'messageNoCity' | translate}}.</h4>
+        </div>
+    </div>
+    <!-- Dependências -->
+    <script src="components/angular/angular.min.js"></script>
+    <script src="components/angular-translate/angular-translate.min.js"></script>
+    <!-- archivies -->
+    <script src="scripts/weatherForecast.controller.js"></script>
+    <script src="scripts/weatherForecast.directive.js"></script>
+    <script src="scripts/weatherForecast.service.js"></script>
+    <script src="scripts/weatherForecast.translate.js"></script>
+</body>
+
+</html>
