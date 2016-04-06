@@ -11,11 +11,11 @@
                     icon: '@'
                 },
                 controller: function($scope) {
-                    $scope.imgurl = function() {
+                    $scope.url = function() {
                         return 'http://openweathermap.org/img/w/' + $scope.icon + '.png';
                     };
                 },
-                template: '<img class="weatherIcon" ng-src="{{ imgurl() }}">'
+                template: '<img class="weatherIcon" ng-src="{{url()}}">'
             };
         });
 })();

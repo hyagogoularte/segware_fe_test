@@ -24,29 +24,29 @@
         </form>
         <!--  -->
         <div ng-if="hasData">
-            <h2>{{'timeIn' | translate}} {{city}}?</h2>
+            <h2>{{'timeIn' | translate}} {{isTheCity}}?</h2>
             <div class="blockInfoCloud">
                 <!--  -->
                 <div class="blockCloud">
-                    <weather icon="{{weather.cloud.icon}}"></weather>
+                    <weather icon="{{cloud.icon}}"></weather>
                 </div>
                 <!--  -->
                 <table class="blockInfo">
                     <tr>
                         <th>{{'actualTemperature' | translate}}: </th>
-                        <td>{{weather.temperature.current | transformToCentrigrate}}</td>
+                        <td>{{temperature.current | transformToCentrigrate}}</td>
                     </tr>
                     <tr>
                         <th>{{'maximumTemperature' | translate}}: </th>
-                        <td>{{weather.temperature.max | transformToCentrigrate}}</td>
+                        <td>{{temperature.max | transformToCentrigrate}}</td>
                     </tr>
                     <tr>
                         <th>{{'minimumTemperature' | translate}}: </th>
-                        <td>{{weather.temperature.min | transformToCentrigrate}}</td>
+                        <td>{{temperature.min | transformToCentrigrate}}</td>
                     </tr>
                     <tr>
                         <th>{{'description' | translate}}: </th>
-                        <td>{{weather.cloud.description | trim | translate}}</td>
+                        <td>{{cloud.description | translate}}</td>
                     </tr>
                 </table>
                 <!--  -->

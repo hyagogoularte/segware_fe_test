@@ -7,7 +7,7 @@
         ])
         .filter('transformToCentrigrate', function($filter) {
             return function(value) {
-                return $filter('number')(value, 1) + '\u00B0C';
+                return $filter('number')(value) + '\u00B0C';
             };
         })
         .controller('weartherForecastController', [
@@ -15,10 +15,8 @@
             'weartherForecastService',
             function($scope, Service) {
                 $scope.hasData = false;
-                $scope.weather = {
-                    temperature: {},
-                    cloud: {}
-                };
+                $scope.temperature ={};
+                $scope.cloud ={};
 
                 $scope.getWeatherForecast = function(city) {
                     if (!angular.isDefined(city) || city === '') {
@@ -31,17 +29,13 @@
                         $scope.hasData = true;
 
                         if (data && data.main) {
-                            if (data.name !== city) {
-                                $scope.hasData = false;
-                                return;
-                            }
+                            $scope.isTheCity = data.name;
+                            $scope.temperature.current = data.main.temp;
+                            $scope.temperature.min = data.main.temp_min;
+                            $scope.temperature.max = data.main.temp_max;
 
-                            $scope.weather.temperature.current = data.main.temp;
-                            $scope.weather.temperature.min = data.main.temp_min;
-                            $scope.weather.temperature.max = data.main.temp_max;
-
-                            $scope.weather.cloud.description = data.weather[0].description;
-                            $scope.weather.cloud.icon = data.weather[0].icon;
+                            $scope.cloud.description = data.weather[0].description;
+                            $scope.cloud.icon = data.weather[0].icon;
                         }
                     });
                 };
