@@ -1,0 +1,15 @@
+.form-group {
+    display: inline-block;
+}
+
+.form-control {
+    width: 400px; display: inline-block;
+}
+
+.weatherIcon {
+    width: 90px;
+}
+
+.blockCloud {
+    float:left;
+}
