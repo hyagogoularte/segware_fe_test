@@ -7,7 +7,8 @@
             '$http',
             function($http) {
                 // valid cities: http://openweathermap.org/help/city_list.txt
-                var appid = '279b4be6d54c8bf6ea9b12275a567156';
+                // http://openweathermap.org/appid
+                var appid = '3d4fee1831549591e625ef0636607180';
                 var typeCallback = 'JSON_CALLBACK';
                 var baseUrl = 'http://api.openweathermap.org/data/2.5/weather?q=:city,at&units=metric&callback=' + typeCallback + '&APPID=' + appid;
 
